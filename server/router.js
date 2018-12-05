@@ -5,13 +5,8 @@ const tukkomiRoboRouter = express.Router();
 
 tukkomiRoboRouter.get('/', (req, res) => {
   const { phrase } = req.query;
-  if (!phrase) {
-    const errorMessage = '何も言わんの？';
-    res.send(errorMessage);
-  } else {
-    const tukkomiMessage = `${phrase}...って、${getRandomTukkomi()}`;
-    res.send(tukkomiMessage);
-  }
+  const message = phrase ? `${phrase}...って、${getRandomTukkomi()}` : '何も言わんの？';
+  res.send(message);
 });
 
 module.exports = tukkomiRoboRouter;
